@@ -1,0 +1,11 @@
+# LaTeX temporary files
+*.aux
+*.log
+*.toc
+*.fls
+# Latexmk
+*.fdb_latexmk
+# SyncTeX
+*.synctex.gz
+#Inkscape
+*/svg-inkscape/*

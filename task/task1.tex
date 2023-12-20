@@ -3,75 +3,95 @@
 \usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc} 
 \usepackage{graphicx}
+\usepackage{svg}
 
 \begin{document}
-\bf 
-\Large\noindent  Werkzeuge für das wissenschaftliche Arbeiten\\
-\normalsize Python for Machine Learning and Data Science\\
-\normalfont \hspace*{4.5cm}Abgabe: 15.12.2023\\
-\hrule\hfill\\[0.2cm]
-\bf \large Inhaltsverzeichnis \normalsize \normalfont\\[0.5cm]
-\hspace*{0.5cm} Inhaltsverzeichnis ..................... Seite 1 \\[0.2cm]
-\hspace*{0.5cm} \bf 1. Projektaufgabe \normalfont ................ Seite 1 \\
-\hspace*{1cm}  1.1. Einleitung .................... Seite 1 \\
-\hspace*{1cm}  1.2. Aufbau ......................... Seite 2 \\
-\hspace*{1cm}  1.3. Methoden ..................... Seite 2 \\[0.2cm]
-\hspace*{0.5cm} \bf 2. Abgabe \normalfont .............................. Seite 3 \\
-\hrule\hfill\\[0.2cm]
-\bf \large 1. Projektaufgabe \normalsize \normalfont\\[0.5cm]
+\title{Werkzeuge für das wissenschaftliche Arbeiten}
+\author{Python for Machine Learning and Data Science}
+\date{Abgabe: 15.12.2023}
+\maketitle
+
+\tableofcontents
+
+\section{Projektaufgabe}
 In dieser Aufgabe beschäftigen wir uns mit Objektorientierung in Python.
 Der Fokus liegt auf der Implementierung einer Klasse, dabei nutzen wir insbesondere auch Magic Methods.\\
 \\
-\hspace*{2cm}\includegraphics[width=12cm, height=5cm]{./../diagram/classes_files.png}\\
-\hspace*{3cm}\scriptsize\bf Abbildung 1: \normalfont Darstellung der Klassenbeziehungen.\normalsize\\
-\bf 1.1. Einleitung \normalfont\\[0.5cm]
-Ein Datensatz besteht aus mehreren Daten, ein einzelnes Datum wird durch ein Objekt der Klasse "DataSetItem" repräsentiert.
+
+\begin{figure}
+	\centering
+	\includesvg[width=\textwidth]{./../diagram/classes_files.svg}
+	\caption{Darstellung der Klassenbeziehungen.}
+\end{figure}
+
+\subsection{Einleitung}
+Ein Datensatz besteht aus mehreren Daten, ein einzelnes Datum wird durch ein Objekt der Klasse \textbf{DataSetItem} repräsentiert.
 Jedes Datum hat einen Namen (Zeichenkette), eine ID (Zahl) und bel. Inhalt.\\
 \\
-Nun sollen mehrere Daten, Objekte vom Typ "DataSetItem", in einem Datensatz zusammengefasst werden.
+Nun sollen mehrere Daten, Objekte vom Typ \textbf{DataSetItem}, in einem Datensatz zusammengefasst werden.
 Sie haben sich schon auf eine Schnittstelle und die benötigen Operationen, die ein Datensatz unterstützen muss, geeinigt.
-Es gibt eine Klasse "DataSetInterface", die die Schnittstelle definiert und Operationen jedes Datensatzes angibt.
+Es gibt eine Klasse \textbf{DataSetInterface}, die die Schnittstelle definiert und Operationen jedes Datensatzes angibt.
 Bisher fehlt aber noch die Implementierung eines Datensatzes mit allen Operationen.\\
 \\
-Implementieren Sie eine Klasse "DataSet" als eine Unterklasse von "DataSetInterface".\\
-\\
-\bf 1.2. Aufbau \normalfont\\[0.5cm]
-Es gibt drei Dateien, "dataset.py", "main.py" und "implementation.py"$^*$.
-In der "dataset.py" befinden sich die Klassen "DataSetInterface" und "DataSetItem",
-in der Datei "implementation.py" muss die Klasse "DataSet" implementiert werden.
-Die Datei "main.py" nutzt die Klassen "DataSet" und "DataSetItem" aus den jeweiligen Dateien und testet die Schnittstelle und Operationen von "DataSetInterface".\\
-\\
-\bf 1.3. Methoden \normalfont\\[0.5cm]
-Bei der Klasse "DataSet" sind insbesondere folgenden Methoden zu implementieren, die genaue Spezifikation finden Sie in der "dataset.py":\\
-$\bullet$ \_\_setitem\_\_(self, name, id\_content)\\
-\hspace*{1cm} Hinzufügen eines Datums, mit Name, ID und Inhalt\\
-$\bullet$ \_\_iadd\_\_(self, item)\\
-\hspace*{1cm} Hinzufügen eines "DataSetItem"\\
-$\bullet$ \_\_delitem\_\_(self, name)\\
-\hspace*{1cm} Löschen eines Datums auf Basis des Namens.\\
-\hspace*{1cm} Das heißt auch, dass der Name eines Datums ein eindeutiger Schlüssel ist und jeder Name nur einmal pro Datensatz vorkommen kann.\\
-$\bullet$ \_\_contains\_\_(self, name)\\
-\hspace*{1cm} Prüfung, ob ein Datum mit diesem Namen im Datensatz vorhanden ist.\\
-$\bullet$ \_\_getitem\_\_(self, name)\\
-\hspace*{1cm} Abrufen des Datums über seinen Namen.\\ 
-$\bullet$ \_\_and\_\_(self, dataset)\\
-\hspace*{1cm} Schnittmenge zweier Datensätze bestimmen und als einen neuen Datensatz zurückgeben.\\
-$\bullet$ \_\_or\_\_(self, dataset)\\
-\hspace*{1cm} Vereinigungen zweier Datensätze bestimmen und als einen neuen Datensatz zurückgeben.\\
-$\bullet$ \_\_iter\_\_(self)\\
-\hspace*{1cm} Iteration über alle Daten den Datensatzes (es ist möglich eine Sortierung für die Reihenfolge der Iteration anzugeben).\\ 
-$\bullet$ filtered\_iterate(self, filter)\\
-\hspace*{1cm} Gefilterte Iteration über einen Datensatz, dabei dient eine Lambda-Funktion mit den Parametern Name und ID für jedes Datum als Filter.\\
-$\bullet$ \_\_len\_\_(self)\\
-\hspace*{1cm} Anzahl der Daten in einem Datensatz abrufen.\\
-\\
-\bf \large 2. Abgabe \normalsize \normalfont\\[0.5cm]
-Programmieren Sie die Klasse "DataSet" in der Datei "implementation.py" zur Lösung der oben beschrieben Aufgabe im VPL.
+Implementieren Sie eine Klasse \textbf{DataSet} als eine Unterklasse von \textbf{DataSetInterface}.
+
+\subsection{Aufbau}
+Es gibt drei Dateien, \textbf{dataset.py}, \textbf{main.py} und \textbf{implementation.py}\footnote{Dateien befinden sich im Ordner \textbf{/code/} dieses Git-Repositories.}.
+In der \textbf{dataset.py} befinden sich die Klassen \textbf{DataSetInterface} und \textbf{DataSetItem},
+in der Datei \textbf{implementation.py} muss die Klasse \textbf{DataSet} implementiert werden.
+Die Datei \textbf{main.py} nutzt die Klassen \textbf{DataSet} und \textbf{DataSetItem} aus den jeweiligen Dateien und testet die Schnittstelle und Operationen von \textbf{DataSetInterface}.
+
+\subsection{Methoden}
+Bei der Klasse \textbf{DataSet} sind insbesondere folgenden Methoden zu implementieren, die genaue Spezifikation finden Sie in der \textbf{dataset.py}:
+
+\begin{itemize}
+	\item \_\_setitem\_\_(self, name, id\_content)
+	      \begin{description}
+		      \item Hinzufügen eines Datums, mit Name, ID und Inhalt
+	      \end{description}
+	\item \_\_iadd\_\_(self, item)
+	      \begin{description}
+		      \item Hinzufügen eines \textbf{DataSetItem}
+	      \end{description}
+	\item \_\_delitem\_\_(self, name)
+	      \begin{description}
+		      \item Löschen eines Datums auf Basis des Namens.
+		      \item Das heißt auch, dass der Name eines Datums ein eindeutiger Schlüssel ist und jeder Name nur einmal pro Datensatz vorkommen kann.
+	      \end{description}
+	\item \_\_contains\_\_(self, name)
+	      \begin{description}
+		      \item Prüfung, ob ein Datum mit diesem Namen im Datensatz vorhanden ist.
+	      \end{description}
+	\item \_\_getitem\_\_(self, name)
+	      \begin{description}
+		      \item Abrufen des Datums über seinen Namen.
+	      \end{description}
+	\item \_\_and\_\_(self, dataset)
+	      \begin{description}
+		      \item Schnittmenge zweier Datensätze bestimmen und als einen neuen Datensatz zurückgeben.
+	      \end{description}
+	\item \_\_or\_\_(self, dataset)
+	      \begin{description}
+		      \item Vereinigungen zweier Datensätze bestimmen und als einen neuen Datensatz zurückgeben.
+	      \end{description}
+	\item \_\_iter\_\_(self)
+	      \begin{description}
+		      \item Iteration über alle Daten den Datensatzes (es ist möglich eine Sortierung für die Reihenfolge der Iteration anzugeben).
+	      \end{description}
+	\item filtered\_iterate(self, filter)
+	      \begin{description}
+		      \item Gefilterte Iteration über einen Datensatz, dabei dient eine Lambda-Funktion mit den Parametern Name und ID für jedes Datum als Filter.
+	      \end{description}
+	\item \_\_len\_\_(self)
+	      \begin{description}
+		      \item Anzahl der Daten in einem Datensatz abrufen.
+	      \end{description}
+\end{itemize}
+
+\section{Abgabe}
+Programmieren Sie die Klasse \textbf{DataSet} in der Datei \textbf{implementation.py} zur Lösung der oben beschrieben Aufgabe im VPL.
 Sie können auch direkt auf Ihrem Computer programmieren, dazu finden Sie alle drei benötigten Dateien zum Download im Moodle.\\
 \\
-Das VPL nutzt den gleichen Code, wobei die "main.py" um weitere Testfälle und Überprüfungen erweitert wurde.
-Die Überprüfungen dienen dazu sicherzustellen, dass Sie die richtigen Klassen nutzen.\\
-%
-\hrule\hfill\\[0.2cm]
-$^*$ Dateien befinden sich im Ordner "/code/" dieses Git-Repositories.\\
+Das VPL nutzt den gleichen Code, wobei die \textbf{main.py} um weitere Testfälle und Überprüfungen erweitert wurde.
+Die Überprüfungen dienen dazu sicherzustellen, dass Sie die richtigen Klassen nutzen.
 \end{document}
